@@ -1,0 +1,521 @@
+<?php
+
+namespace UsersBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use UsersBundle\Utils\TVimageManipulation;
+
+/**
+ * @ORM\Entity(repositoryClass="UsersBundle\Entity\Repository\UsersRepository")
+ * @ORM\Table(name="tb_users") 
+ * @ORM\HasLifecycleCallbacks()
+ */
+class Users implements UserInterface,\Serializable {
+    
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+    
+    /**
+     * @ORM\Column(type="string", length=20, nullable=true) 
+     */
+    protected $cedula;
+    
+    /**
+     * @ORM\Column(type="string", length=100) 
+     * @Assert\NotBlank(message="Campo no puede estar vacio.")
+     */
+    protected $nombre;
+    
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true) 
+     */
+    protected $telefono;
+    
+    /**
+     * @ORM\Column(type="text", nullable=true) 
+     */
+    protected $direccion;    
+    
+    /**
+     * @ORM\Column(type="string", length=150, unique=true) 
+     * @Assert\Email(message="La direccion de correo no es valido.")
+     */
+    protected $email;
+    
+    /**
+     * @ORM\Column(type="string", length=255) 
+     */
+    protected $password;
+    
+    /**
+     * @ORM\Column(type="string", length=255) 
+     */
+    protected $salt;    
+    
+    /**
+     * @ORM\Column(type="datetime") 
+     */
+    protected $ultimaConexion;    
+    
+    /**
+     * @ORM\Column(type="boolean") 
+     */
+    protected $active;    
+    
+    private $file;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="UsersBundle\Entity\Sede", inversedBy="user")
+     * @ORM\JoinColumn(name="sede_id", referencedColumnName="id")
+     */
+    protected $sede;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Role")
+     * @ORM\JoinTable(name="user_role",
+     *     joinColumns={@ORM\JoinColumn(name="usuario_id", referencedColumnName="id")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="role_id", referencedColumnName="id")}
+     * )
+     */
+    protected $user_roles;
+    
+    /**
+     * @ORM\Column(type="string", length=150, nullable = true) 
+     */
+    protected $imagen;
+    
+    /**
+     * @ORM\Column(type="datetime") 
+     */    
+    protected $created;
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->user_roles = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     *
+     * @return Users
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Set telefono
+     *
+     * @param string $telefono
+     *
+     * @return Users
+     */
+    public function setTelefono($telefono)
+    {
+        $this->telefono = $telefono;
+
+        return $this;
+    }
+
+    /**
+     * Get telefono
+     *
+     * @return string
+     */
+    public function getTelefono()
+    {
+        return $this->telefono;
+    }
+
+    /**
+     * Set direccion
+     *
+     * @param string $direccion
+     *
+     * @return Users
+     */
+    public function setDireccion($direccion)
+    {
+        $this->direccion = $direccion;
+
+        return $this;
+    }
+
+    /**
+     * Get direccion
+     *
+     * @return string
+     */
+    public function getDireccion()
+    {
+        return $this->direccion;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     *
+     * @return Users
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set password
+     *
+     * @param string $password
+     *
+     * @return Users
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get password
+     *
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * Set salt
+     *
+     * @param string $salt
+     *
+     * @return Users
+     */
+    public function setSalt($salt)
+    {
+        $this->salt = $salt;
+
+        return $this;
+    }
+
+    /**
+     * Get salt
+     *
+     * @return string
+     */
+    public function getSalt()
+    {
+        return $this->salt;
+    }
+
+    /**
+     * Set ultimaConexion
+     *
+     * @param \DateTime $ultimaConexion
+     *
+     * @return Users
+     */
+    public function setUltimaConexion($ultimaConexion)
+    {
+        $this->ultimaConexion = $ultimaConexion;
+
+        return $this;
+    }
+
+    /**
+     * Get ultimaConexion
+     *
+     * @return \DateTime
+     */
+    public function getUltimaConexion()
+    {
+        return $this->ultimaConexion;
+    }
+
+    /**
+     * Set imagen
+     *
+     * @param string $imagen
+     *
+     * @return Users
+     */
+    public function setImagen($imagen)
+    {
+        $this->imagen = $imagen;
+
+        return $this;
+    }
+
+    /**
+     * Get imagen
+     *
+     * @return string
+     */
+    public function getImagen()
+    {
+        return $this->imagen;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     *
+     * @return Users
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Add userRole
+     *
+     * @param \UsersBundle\Entity\Role $userRole
+     *
+     * @return Users
+     */
+    public function addUserRole(\UsersBundle\Entity\Role $userRole)
+    {
+        $this->user_roles[] = $userRole;
+
+        return $this;
+    }
+
+    /**
+     * Remove userRole
+     *
+     * @param \UsersBundle\Entity\Role $userRole
+     */
+    public function removeUserRole(\UsersBundle\Entity\Role $userRole)
+    {
+        $this->user_roles->removeElement($userRole);
+    }
+    
+     /**
+     * Set active
+     *
+     * @param boolean $active
+     *
+     * @return Users
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+    
+    public function isActive(){
+        return $this->getActive();
+    }
+
+    /**
+     * Get active
+     *
+     * @return boolean
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * Get userRoles
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUserRoles()
+    {
+        return $this->user_roles;
+    }
+
+    public function eraseCredentials() {
+        
+    }
+
+    public function getRoles() {
+        return $this->user_roles->toArray();
+    }
+
+    public function getUsername() {
+        return $this->getNombre();
+    }
+    
+    
+    public function serialize() {
+        return serialize(array(
+            $this->id,
+            $this->active,            
+            $this->salt,            
+            $this->password    
+        ));
+    }
+
+    public function unserialize($serialized) {
+        list (
+            $this->id,
+            $this->active,    
+            $this->salt,            
+            $this->password
+            ) = unserialize($serialized);
+    }   
+    
+    public function subirFoto($directorio,$x1, $x2, $y1, $y2)
+    {
+        if (null === $this->getFile()) {
+            return;
+        }
+
+        if(is_file($directorio.'/'.$this->getImagen())){
+            unlink($directorio.'/'.$this->getImagen());
+        }
+        $nombreArchivoFoto = md5(time()).'.'.$this->getFile()->guessExtension();
+        $this->getFile()->move($directorio, $nombreArchivoFoto);
+        $this->imagen = $nombreArchivoFoto;
+        $this->crop($directorio, $nombreArchivoFoto, $x1, $x2, $y1, $y2);
+        
+        
+        $this->file = null;
+    }
+        
+    public function crop($dir, $filenam, $x1, $x2, $y1, $y2){
+        try
+        {			
+                $TVimageManipulation = new TVimageManipulation($dir.$filenam);
+                $TVimageManipulation->crop($x1,	$y1,	$x2,	$y2);
+                $TVimageManipulation->save($dir.$filenam);
+                $TVimageManipulation->resize(200);
+                $TVimageManipulation->save($dir.$filenam);
+               // $currentFileSize     =$TVimageManipulation->getCurrentFilesize();			
+
+                //if($this->enableMaximumSize == "true"){
+                //        if(preg_match('/(JPG|jpg|JPEG|jpeg)/i',$this->fileType)){
+                //                $this->ManipularSize();
+                //        }
+                //}
+
+                //$this->currentWidth    = $TVimageManipulation->getCurrentWidth();
+                //$this->currentHeight   = $TVimageManipulation->getCurrentHeight();
+                //$this->currentFileSize =$TVimageManipulation->getCurrentFilesize();
+
+                return true;
+        }catch(Exception $e){
+                return false;
+        }
+    }
+    
+    public function __toString() {
+        return $this->getUsername();
+    }
+    
+    public function getFile()
+    {
+        return $this->file;
+    }
+    
+    public function setFile(UploadedFile $file = null)
+    {
+        $this->file = $file;
+        return $this;
+    }
+    
+    /**
+     * @ORM\PrePersist
+     */
+    public function setValuedPreP(){
+        $this->setUltimaConexion(new \DateTime());
+        $this->setCreated(new \DateTime());
+    }
+    
+    
+
+   
+
+    /**
+     * Set sede
+     *
+     * @param \UsersBundle\Entity\Sede $sede
+     *
+     * @return Users
+     */
+    public function setSede(\UsersBundle\Entity\Sede $sede = null)
+    {
+        $this->sede = $sede;
+
+        return $this;
+    }
+
+    /**
+     * Get sede
+     *
+     * @return \UsersBundle\Entity\Sede
+     */
+    public function getSede()
+    {
+        return $this->sede;
+    }
+}

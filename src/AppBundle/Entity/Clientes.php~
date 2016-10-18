@@ -1,0 +1,440 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Table(name="clientes")
+ * @ORM\Entity()
+ */
+class Clientes {
+    
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    protected $id;
+    
+    /**
+     * @ORM\Column(type="string", length=20, unique=true)
+     */
+    protected $cedula;
+    
+    /**
+     * @ORM\Column(type="string", length=20)
+     */
+    protected $primernombre;
+    
+    
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    protected $segundonombre;
+    
+    
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    protected $primerapellido;
+    
+    
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    protected $segundoapellido;
+    
+    /**
+     * @ORM\Column(type="string", length=20)
+     */
+    protected $telefonohab;
+    
+    
+    /**
+     * @ORM\Column(type="string", length=20, nullable=true)
+     */
+    protected $celular;
+    
+    
+    /**
+     * @ORM\Column(type="string", length=50 )
+     */
+    protected $direccion;
+    
+    
+    /**
+     * @ORM\Column(type="string", length=40)
+     */
+    protected $email;
+    
+    
+     /**
+     * @ORM\OneToMany(targetEntity="Reservaciones", mappedBy="cliente_id")
+     */
+    protected $clientereserva;
+
+    
+  
+      /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $vigente;
+  
+    
+    
+      /**
+     * @ORM\ManyToOne(targetEntity="ClientesCondicion", inversedBy="condcliente")
+     * @ORM\JoinColumn(name="condicion_id", referencedColumnName="id")
+  */
+    
+    protected $condicion_id;
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set cedula
+     *
+     * @param string $cedula
+     *
+     * @return Clientes
+     */
+    public function setCedula($cedula)
+    {
+        $this->cedula = $cedula;
+
+        return $this;
+    }
+
+    /**
+     * Get cedula
+     *
+     * @return string
+     */
+    public function getCedula()
+    {
+        return $this->cedula;
+    }
+
+    /**
+     * Set primernombre
+     *
+     * @param string $primernombre
+     *
+     * @return Clientes
+     */
+    public function setPrimernombre($primernombre)
+    {
+        $this->primernombre = $primernombre;
+
+        return $this;
+    }
+
+    /**
+     * Get primernombre
+     *
+     * @return string
+     */
+    public function getPrimernombre()
+    {
+        return $this->primernombre;
+    }
+
+    /**
+     * Set segundonombre
+     *
+     * @param string $segundonombre
+     *
+     * @return Clientes
+     */
+    public function setSegundonombre($segundonombre)
+    {
+        $this->segundonombre = $segundonombre;
+
+        return $this;
+    }
+
+    /**
+     * Get segundonombre
+     *
+     * @return string
+     */
+    public function getSegundonombre()
+    {
+        return $this->segundonombre;
+    }
+
+    /**
+     * Set primerapellido
+     *
+     * @param string $primerapellido
+     *
+     * @return Clientes
+     */
+    public function setPrimerapellido($primerapellido)
+    {
+        $this->primerapellido = $primerapellido;
+
+        return $this;
+    }
+
+    /**
+     * Get primerapellido
+     *
+     * @return string
+     */
+    public function getPrimerapellido()
+    {
+        return $this->primerapellido;
+    }
+
+    /**
+     * Set segundoapellido
+     *
+     * @param string $segundoapellido
+     *
+     * @return Clientes
+     */
+    public function setSegundoapellido($segundoapellido)
+    {
+        $this->segundoapellido = $segundoapellido;
+
+        return $this;
+    }
+
+    /**
+     * Get segundoapellido
+     *
+     * @return string
+     */
+    public function getSegundoapellido()
+    {
+        return $this->segundoapellido;
+    }
+
+    /**
+     * Set telefonohab
+     *
+     * @param string $telefonohab
+     *
+     * @return Clientes
+     */
+    public function setTelefonohab($telefonohab)
+    {
+        $this->telefonohab = $telefonohab;
+
+        return $this;
+    }
+
+    /**
+     * Get telefonohab
+     *
+     * @return string
+     */
+    public function getTelefonohab()
+    {
+        return $this->telefonohab;
+    }
+
+    /**
+     * Set celular
+     *
+     * @param string $celular
+     *
+     * @return Clientes
+     */
+    public function setCelular($celular)
+    {
+        $this->celular = $celular;
+
+        return $this;
+    }
+
+    /**
+     * Get celular
+     *
+     * @return string
+     */
+    public function getCelular()
+    {
+        return $this->celular;
+    }
+
+    /**
+     * Set direccion
+     *
+     * @param string $direccion
+     *
+     * @return Clientes
+     */
+    public function setDireccion($direccion)
+    {
+        $this->direccion = $direccion;
+
+        return $this;
+    }
+
+    /**
+     * Get direccion
+     *
+     * @return string
+     */
+    public function getDireccion()
+    {
+        return $this->direccion;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     *
+     * @return Clientes
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set vigente
+     *
+     * @param integer $vigente
+     *
+     * @return Clientes
+     */
+    public function setVigente($vigente)
+    {
+        $this->vigente = $vigente;
+
+        return $this;
+    }
+
+    /**
+     * Get vigente
+     *
+     * @return integer
+     */
+    public function getVigente()
+    {
+        return $this->vigente;
+    }
+
+    /**
+     * Set condcliente
+     *
+     * @param \AppBundle\Entity\ClientesCondicion $condcliente
+     *
+     * @return Clientes
+     */
+    public function setCondcliente(\AppBundle\Entity\ClientesCondicion $condcliente = null)
+    {
+        $this->condcliente = $condcliente;
+
+        return $this;
+    }
+
+    /**
+     * Get condcliente
+     *
+     * @return \AppBundle\Entity\ClientesCondicion
+     */
+    public function getCondcliente()
+    {
+        return $this->condcliente;
+    }
+
+    /**
+     * Set condicionId
+     *
+     * @param \AppBundle\Entity\ClientesCondicion $condicionId
+     *
+     * @return Clientes
+     */
+    public function setCondicionId(\AppBundle\Entity\ClientesCondicion $condicionId = null)
+    {
+        $this->condicion_id = $condicionId;
+
+        return $this;
+    }
+
+    /**
+     * Get condicionId
+     *
+     * @return \AppBundle\Entity\ClientesCondicion
+     */
+    public function getCondicionId()
+    {
+        return $this->condicion_id;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->clientereserva = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add clientereserva
+     *
+     * @param \AppBundle\Entity\Clientes $clientereserva
+     *
+     * @return Clientes
+     */
+    public function addClientereserva(\AppBundle\Entity\Clientes $clientereserva)
+    {
+        $this->clientereserva[] = $clientereserva;
+
+        return $this;
+    }
+
+    /**
+     * Remove clientereserva
+     *
+     * @param \AppBundle\Entity\Clientes $clientereserva
+     */
+    public function removeClientereserva(\AppBundle\Entity\Clientes $clientereserva)
+    {
+        $this->clientereserva->removeElement($clientereserva);
+    }
+
+    /**
+     * Get clientereserva
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getClientereserva()
+    {
+        return $this->clientereserva;
+    }
+    
+    
+     // METODO PARA OBTENER INFORMACION
+    public function __toString(){
+        return $this->getPrimerNombre().' '.$this->getPrimerApellido();
+    }
+
+    
+}

@@ -1,0 +1,408 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Table(name="reservaciones")
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\Repository\ReservacionesRepository")
+ */
+class Reservaciones {
+    
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    protected $id;
+    
+    
+     
+     /**
+     * @ORM\Column(type="float", scale=2)
+     */
+    protected $monto;
+   
+    
+      
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $cant_adulto;
+    
+    
+      
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $cant_menores;
+    
+    
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $cant_apartamentos;
+    
+    
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    protected $fecha_inicial;
+    
+    
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    protected $fecha_final;
+  
+    
+      /**
+     * @ORM\Column(type="datetime")
+     */
+    protected $fecharegistro;
+  
+    
+    
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="ReservacionCondicion", inversedBy="condreservacion")
+     * @ORM\JoinColumn(name="condicion_id", referencedColumnName="id")
+    */
+    
+    protected $condicion_id;
+    
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="ReservacionEstado", inversedBy="condestado")
+     * @ORM\JoinColumn(name="estado_id", referencedColumnName="id")
+    */
+    
+    protected $estado_id;
+    
+    
+     /**
+     * @ORM\ManyToOne(targetEntity="Clientes", inversedBy="clientereserva")
+     * @ORM\JoinColumn(name="cliente_id", referencedColumnName="id")
+    */
+    
+    protected $cliente_id;
+    
+       /**
+     * @ORM\OneToMany(targetEntity="ReservacionDetalle", mappedBy="reservacion_id")
+     */
+        protected $reservaid;
+    
+    
+     /**
+     * @ORM\OneToMany(targetEntity="Depositos", mappedBy="reservaciondepid")
+     */
+     protected $reservadepid;
+    
+    
+    
+   
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->reservaid = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set monto
+     *
+     * @param float $monto
+     *
+     * @return Reservaciones
+     */
+    public function setMonto($monto)
+    {
+        $this->monto = $monto;
+
+        return $this;
+    }
+
+    /**
+     * Get monto
+     *
+     * @return float
+     */
+    public function getMonto()
+    {
+        return $this->monto;
+    }
+
+    /**
+     * Set cantAdulto
+     *
+     * @param integer $cantAdulto
+     *
+     * @return Reservaciones
+     */
+    public function setCantAdulto($cantAdulto)
+    {
+        $this->cant_adulto = $cantAdulto;
+
+        return $this;
+    }
+
+    /**
+     * Get cantAdulto
+     *
+     * @return integer
+     */
+    public function getCantAdulto()
+    {
+        return $this->cant_adulto;
+    }
+
+    /**
+     * Set cantMenores
+     *
+     * @param integer $cantMenores
+     *
+     * @return Reservaciones
+     */
+    public function setCantMenores($cantMenores)
+    {
+        $this->cant_menores = $cantMenores;
+
+        return $this;
+    }
+
+    /**
+     * Get cantMenores
+     *
+     * @return integer
+     */
+    public function getCantMenores()
+    {
+        return $this->cant_menores;
+    }
+
+    /**
+     * Set cantApartamentos
+     *
+     * @param integer $cantApartamentos
+     *
+     * @return Reservaciones
+     */
+    public function setCantApartamentos($cantApartamentos)
+    {
+        $this->cant_apartamentos = $cantApartamentos;
+
+        return $this;
+    }
+
+    /**
+     * Get cantApartamentos
+     *
+     * @return integer
+     */
+    public function getCantApartamentos()
+    {
+        return $this->cant_apartamentos;
+    }
+
+    /**
+     * Set fechaInicial
+     *
+     * @param \DateTime $fechaInicial
+     *
+     * @return Reservaciones
+     */
+    public function setFechaInicial($fechaInicial)
+    {
+        $this->fecha_inicial = $fechaInicial;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaInicial
+     *
+     * @return \DateTime
+     */
+    public function getFechaInicial()
+    {
+        return $this->fecha_inicial;
+    }
+
+    /**
+     * Set fechaFinal
+     *
+     * @param \DateTime $fechaFinal
+     *
+     * @return Reservaciones
+     */
+    public function setFechaFinal($fechaFinal)
+    {
+        $this->fecha_final = $fechaFinal;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaFinal
+     *
+     * @return \DateTime
+     */
+    public function getFechaFinal()
+    {
+        return $this->fecha_final;
+    }
+
+    /**
+     * Set condicionId
+     *
+     * @param \AppBundle\Entity\ReservacionCondicion $condicionId
+     *
+     * @return Reservaciones
+     */
+    public function setCondicionId(\AppBundle\Entity\ReservacionCondicion $condicionId = null)
+    {
+        $this->condicion_id = $condicionId;
+
+        return $this;
+    }
+
+    /**
+     * Get condicionId
+     *
+     * @return \AppBundle\Entity\ReservacionCondicion
+     */
+    public function getCondicionId()
+    {
+        return $this->condicion_id;
+    }
+
+    /**
+     * Set estadoId
+     *
+     * @param \AppBundle\Entity\ReservacionEstado $estadoId
+     *
+     * @return Reservaciones
+     */
+    public function setEstadoId(\AppBundle\Entity\ReservacionEstado $estadoId = null)
+    {
+        $this->estado_id = $estadoId;
+
+        return $this;
+    }
+
+    /**
+     * Get estadoId
+     *
+     * @return \AppBundle\Entity\ReservacionEstado
+     */
+    public function getEstadoId()
+    {
+        return $this->estado_id;
+    }
+
+    /**
+     * Set clienteId
+     *
+     * @param \AppBundle\Entity\Clientes $clienteId
+     *
+     * @return Reservaciones
+     */
+    public function setClienteId(\AppBundle\Entity\Clientes $clienteId = null)
+    {
+        $this->cliente_id = $clienteId;
+
+        return $this;
+    }
+
+    /**
+     * Get clienteId
+     *
+     * @return \AppBundle\Entity\Clientes
+     */
+    public function getClienteId()
+    {
+        return $this->cliente_id;
+    }
+
+    /**
+     * Add reservaid
+     *
+     * @param \AppBundle\Entity\ReservacionDetalle $reservaid
+     *
+     * @return Reservaciones
+     */
+    public function addReservaid(\AppBundle\Entity\ReservacionDetalle $reservaid)
+    {
+        $this->reservaid[] = $reservaid;
+
+        return $this;
+    }
+
+    /**
+     * Remove reservaid
+     *
+     * @param \AppBundle\Entity\ReservacionDetalle $reservaid
+     */
+    public function removeReservaid(\AppBundle\Entity\ReservacionDetalle $reservaid)
+    {
+        $this->reservaid->removeElement($reservaid);
+    }
+
+    /**
+     * Get reservaid
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReservaid()
+    {
+        return $this->reservaid;
+    }
+
+    /**
+     * Add reservadepid
+     *
+     * @param \AppBundle\Entity\Depositos $reservadepid
+     *
+     * @return Reservaciones
+     */
+    public function addReservadepid(\AppBundle\Entity\Depositos $reservadepid)
+    {
+        $this->reservadepid[] = $reservadepid;
+
+        return $this;
+    }
+
+    /**
+     * Remove reservadepid
+     *
+     * @param \AppBundle\Entity\Depositos $reservadepid
+     */
+    public function removeReservadepid(\AppBundle\Entity\Depositos $reservadepid)
+    {
+        $this->reservadepid->removeElement($reservadepid);
+    }
+
+    /**
+     * Get reservadepid
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReservadepid()
+    {
+        return $this->reservadepid;
+    }
+    
+       
+}
