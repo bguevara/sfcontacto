@@ -1,0 +1,71 @@
+{% extends "AppBundle::layout_backend.html.twig" %}
+
+{% block headercontent %}
+    Reservaciones
+{% endblock %}
+
+{% block content %}    
+    <div class="box">
+        <div class="box-header">
+            <h3>Imprimir Reservaciones</h3>
+        </div>
+        <div class="box-body">       
+            
+            {{ form_start(form) }}
+            <div class="row">    
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="form-group">
+                        {{form_label(form.cedula, 'Cédula')}}
+                        {{form_widget(form.cedula)}}
+                    </div>
+                </div>
+            </div>
+            {{form_errors(form)}}
+            {{form_rest(form)}}
+            {{ form_end(form)}}
+            
+        </div>        
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+
+    
+<link href="{{asset('bundles/app/dist/easyautocomplete/easy-autocomplete.min.css')}}" rel="stylesheet" />
+<script src="{{asset('bundles/app/dist/easyautocomplete/jquery.easy-autocomplete.min.js')}}" type="text/javascript"></script>
+
+
+<script>
+
+
+   $(function() {
+
+
+    var options = {
+            url: "{{url('opt_all_clientes')}}",
+            getValue: "codigo",
+            template: {
+                type: "description",
+                fields: {   
+                    description: "nombre"
+                }
+            },
+            list: {
+                match: {
+                    enabled: true
+                }
+            },
+            theme: "plate-dark"
+        };
+
+$("#form_cedula").easyAutocomplete(options);
+
+
+
+
+  } );
+  </script>
+
+
+{% endblock %}
+

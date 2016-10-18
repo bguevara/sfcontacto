@@ -1,0 +1,846 @@
+ body {
+	margin: 0;
+	padding: 0;
+ }
+ 
+ #background 
+{ 
+	 left: 0px; 
+	 top: 0px; 
+	 position: relative; 
+	 margin-left: auto; 
+	 margin-right: auto; 
+	 width: 100%;
+	 height: 2000px; 
+	 overflow: hidden;
+	 z-index:0;
+	} 
+
+ #Background 
+{ 
+	 left: 0px; 
+	 top: 0px; 
+	 position: absolute; 
+	 width: 100%;
+	 height: 1000px;
+	 z-index:1;
+} 
+
+ #Rectangle 
+{ 
+	 left: -1px; 
+	 top: 1648px; 
+	 position: absolute; 
+	 width: 90%;
+	 height: 353px;
+	 z-index:2;
+} 
+
+ #Rectangle_0 
+{ 
+	 left: -1px; 
+	 top: 1948px; 
+	 position: absolute; 
+	 width: 90%;
+	 height: 53px;
+	 z-index:3;
+} 
+
+ #Community 
+{ 
+	 left: 765px; 
+	 top: 1701px; 
+	 position: absolute; 
+	 width: 117px;
+	 height: 20px;
+	 z-index:4;
+} 
+
+ #fromtheBLOG 
+{ 
+	 left: 962px; 
+	 top: 1701px; 
+	 position: absolute; 
+	 width: 136px;
+	 height: 20px;
+	 z-index:5;
+} 
+
+ #Company 
+{ 
+	 left: 565px; 
+	 top: 1702px; 
+	 position: absolute; 
+	 width: 94px;
+	 height: 19px;
+	 z-index:6;
+} 
+
+ #Path 
+{ 
+	 left: 1180px; 
+	 top: 1962px; 
+	 position: absolute; 
+	 width: 13px;
+	 height: 25px;
+	 z-index:7;
+} 
+
+ #CompositePath 
+{ 
+	 left: 1221px; 
+	 top: 1963px; 
+	 position: absolute; 
+	 width: 24px;
+	 height: 25px;
+	 z-index:8;
+} 
+
+ #Path_0 
+{ 
+	 left: 1269px; 
+	 top: 1963px; 
+	 position: absolute; 
+	 width: 19px;
+	 height: 25px;
+	 z-index:9;
+} 
+
+ #CompositePath_0 
+{ 
+	 left: 1310px; 
+	 top: 1962px; 
+	 position: absolute; 
+	 width: 25px;
+	 height: 24px;
+	 z-index:10;
+} 
+
+ #MODUS 
+{ 
+	 left: 168px; 
+	 top: 1698px; 
+	 position: absolute; 
+	 width: 113px;
+	 height: 21px;
+	 z-index:11;
+} 
+
+ #Loremipsumdolorsi 
+{ 
+	 left: 168px; 
+	 top: 1752px; 
+	 position: absolute; 
+	 width: 361px;
+	 height: 60px;
+	 z-index:12;
+} 
+
+ #Phone 
+{ 
+	 left: 169px; 
+	 top: 1846px; 
+	 position: absolute; 
+	 width: 41px;
+	 height: 10px;
+	 z-index:13;
+} 
+
+ #email 
+{ 
+	 left: 168px; 
+	 top: 1876px; 
+	 position: absolute; 
+	 width: 39px;
+	 height: 10px;
+	 z-index:14;
+} 
+
+ #layer_18225695896 
+{ 
+	 left: 230px; 
+	 top: 1844px; 
+	 position: absolute; 
+	 width: 130px;
+	 height: 14px;
+	 z-index:15;
+} 
+
+ #infomoduversus 
+{ 
+	 left: 228px; 
+	 top: 1873px; 
+	 position: absolute; 
+	 width: 168px;
+	 height: 20px;
+	 z-index:16;
+} 
+
+ #BlogForumSupportN 
+{ 
+	 left: 803px; 
+	 top: 1752px; 
+	 position: absolute; 
+	 width: 66px;
+	 height: 80px;
+	 z-index:17;
+} 
+
+ #AboutFAQContactTe 
+{ 
+	 left: 603px; 
+	 top: 1752px; 
+	 position: absolute; 
+	 width: 75px;
+	 height: 127px;
+	 z-index:18;
+} 
+
+ #layer_19 
+{ 
+	 left: 788px; 
+	 top: 1752px; 
+	 position: absolute; 
+	 width: 5px;
+	 height: 8px;
+	 z-index:19;
+} 
+
+ #layer_20 
+{ 
+	 left: 588px; 
+	 top: 1752px; 
+	 position: absolute; 
+	 width: 5px;
+	 height: 8px;
+	 z-index:20;
+} 
+
+ #layer_21 
+{ 
+	 left: 788px; 
+	 top: 1776px; 
+	 position: absolute; 
+	 width: 5px;
+	 height: 8px;
+	 z-index:21;
+} 
+
+ #layer_22 
+{ 
+	 left: 588px; 
+	 top: 1776px; 
+	 position: absolute; 
+	 width: 5px;
+	 height: 8px;
+	 z-index:22;
+} 
+
+ #layer_23 
+{ 
+	 left: 788px; 
+	 top: 1799px; 
+	 position: absolute; 
+	 width: 5px;
+	 height: 8px;
+	 z-index:23;
+} 
+
+ #layer_24 
+{ 
+	 left: 588px; 
+	 top: 1799px; 
+	 position: absolute; 
+	 width: 5px;
+	 height: 8px;
+	 z-index:24;
+} 
+
+ #layer_25 
+{ 
+	 left: 788px; 
+	 top: 1822px; 
+	 position: absolute; 
+	 width: 5px;
+	 height: 8px;
+	 z-index:25;
+} 
+
+ #layer_26 
+{ 
+	 left: 588px; 
+	 top: 1822px; 
+	 position: absolute; 
+	 width: 5px;
+	 height: 8px;
+	 z-index:26;
+} 
+
+ #layer_27 
+{ 
+	 left: 588px; 
+	 top: 1846px; 
+	 position: absolute; 
+	 width: 5px;
+	 height: 8px;
+	 z-index:27;
+} 
+
+ #layer_28 
+{ 
+	 left: 588px; 
+	 top: 1871px; 
+	 position: absolute; 
+	 width: 5px;
+	 height: 8px;
+	 z-index:28;
+} 
+
+ #versus 
+{ 
+	 left: 285px; 
+	 top: 1706px; 
+	 position: absolute; 
+	 width: 75px;
+	 height: 13px;
+	 z-index:29;
+} 
+
+ #2013ModusVersus 
+{ 
+	 left: 169px; 
+	 top: 1973px; 
+	 position: absolute; 
+	 width: 110px;
+	 height: 9px;
+	 z-index:30;
+} 
+
+ #Path_1 
+{ 
+	 left: -676px; 
+	 top: 1648px; 
+	 position: absolute; 
+	 width: 2852px;
+	 height: 22px;
+	 z-index:31;
+} 
+
+ #Rectangle_1 
+{ 
+	 left: 961px; 
+	 top: 1743px; 
+	 position: absolute; 
+	 width: 73px;
+	 height: 73px;
+	 z-index:32;
+} 
+
+ #Rectangle_2 
+{ 
+	 left: 961px; 
+	 top: 1833px; 
+	 position: absolute; 
+	 width: 73px;
+	 height: 73px;
+	 z-index:33;
+} 
+
+ #Loremipsumdolorsi_0 
+{ 
+	 left: 1051px; 
+	 top: 1747px; 
+	 position: absolute; 
+	 width: 243px;
+	 height: 32px;
+	 z-index:34;
+} 
+
+ #Loremipsumdolorsi_1 
+{ 
+	 left: 1051px; 
+	 top: 1837px; 
+	 position: absolute; 
+	 width: 243px;
+	 height: 32px;
+	 z-index:35;
+} 
+
+ #26May2013 
+{ 
+	 left: 1051px; 
+	 top: 1788px; 
+	 position: absolute; 
+	 width: 77px;
+	 height: 12px;
+	 z-index:36;
+} 
+
+ #26May2013_0 
+{ 
+	 left: 1051px; 
+	 top: 1878px; 
+	 position: absolute; 
+	 width: 77px;
+	 height: 12px;
+	 z-index:37;
+} 
+
+ #layer_38 
+{ 
+	 left: 982px; 
+	 top: 1767px; 
+	 position: absolute; 
+	 width: 33px;
+	 height: 27px;
+	 z-index:38;
+} 
+
+ #layer_39 
+{ 
+	 left: 982px; 
+	 top: 1857px; 
+	 position: absolute; 
+	 width: 33px;
+	 height: 27px;
+	 z-index:39;
+} 
+
+ #PORTFOLIOcopy 
+{ 
+	 left: 173px; 
+	 top: 824px; 
+	 position: absolute; 
+	 width: 141px;
+	 height: 17px;
+	 z-index:40;
+} 
+
+
+ #cuerpo 
+{ 
+	 left: 173px; 
+	 top: 924px; 
+	 position: absolute; 
+} 
+
+
+ #Path_2 
+{ 
+	 left: 160px; 
+	 top: 1358px; 
+	 position: absolute; 
+	 width: 203px;
+	 height: 57px;
+	 z-index:41;
+} 
+
+ #Path_3 
+{ 
+	 left: 160px; 
+	 top: 1358px; 
+	 position: absolute; 
+	 width: 203px;
+	 height: 53px;
+	 z-index:42;
+} 
+
+ #readmore 
+{ 
+	 left: 236px; 
+	 top: 1378px; 
+	 position: absolute; 
+	 width: 51px;
+	 height: 14px;
+	 z-index:43;
+} 
+
+ #RoundedRectangle7 
+{ 
+	 left: 160px; 
+	 top: 902px; 
+	 position: absolute; 
+	 width: 473px;
+	 height: 43px;
+	 z-index:44;
+} 
+
+ #Name 
+{ 
+	 left: 665px; 
+	 top: 916px; 
+	 position: absolute; 
+	 width: 50px;
+	 height: 13px;
+	 z-index:45;
+} 
+
+ #RoundedRectangle7cop 
+{ 
+	 left: 160px; 
+	 top: 962px; 
+	 position: absolute; 
+	 width: 473px;
+	 height: 43px;
+	 z-index:46;
+} 
+
+ #Email 
+{ 
+	 left: 665px; 
+	 top: 975px; 
+	 position: absolute; 
+	 width: 51px;
+	 height: 14px;
+	 z-index:47;
+} 
+
+ #RoundedRectangle7cop_0 
+{ 
+	 left: 160px; 
+	 top: 1022px; 
+	 position: absolute; 
+	 width: 473px;
+	 height: 43px;
+	 z-index:48;
+} 
+
+ #RoundedRectangle7cop_1 
+{ 
+	 left: 160px; 
+	 top: 1082px; 
+	 position: absolute; 
+	 width: 773px;
+	 height: 243px;
+	 z-index:49;
+} 
+
+ #Website 
+{ 
+	 left: 664px; 
+	 top: 1035px; 
+	 position: absolute; 
+	 width: 73px;
+	 height: 14px;
+	 z-index:50;
+} 
+
+ #PORTFOLIOcopy2 
+{ 
+	 left: 1062px; 
+	 top: 824px; 
+	 position: absolute; 
+	 width: 89px;
+	 height: 14px;
+	 z-index:51;
+} 
+
+ #layer_52 
+{ 
+	 left: 1063px; 
+	 top: 888px; 
+	 position: absolute; 
+	 width: 21px;
+	 height: 32px;
+	 z-index:52;
+} 
+
+ #layer_53 
+{ 
+	 left: 1069px; 
+	 top: 954px; 
+	 position: absolute; 
+	 width: 15px;
+	 height: 15px;
+	 z-index:53;
+} 
+
+ #Utinterdumtristiquee 
+{ 
+	 left: 1095px; 
+	 top: 889px; 
+	 position: absolute; 
+	 width: 197px;
+	 height: 35px;
+	 z-index:54;
+} 
+
+ #layer_11156985698 
+{ 
+	 left: 1095px; 
+	 top: 958px; 
+	 position: absolute; 
+	 width: 106px;
+	 height: 12px;
+	 z-index:55;
+} 
+
+ #layer_56 
+{ 
+	 left: 1069px; 
+	 top: 986px; 
+	 position: absolute; 
+	 width: 18px;
+	 height: 15px;
+	 z-index:56;
+} 
+
+ #modusversuscom 
+{ 
+	 left: 1094px; 
+	 top: 987px; 
+	 position: absolute; 
+	 width: 154px;
+	 height: 17px;
+	 z-index:57;
+} 
+
+ #Rectangle_3 
+{ 
+	 left: 160px; 
+	 top: 669px; 
+	 position: absolute; 
+	 width: 1173px;
+	 height: 93px;
+	 z-index:58;
+} 
+
+ #Uteleifendliberos 
+{ 
+	 left: 182px; 
+	 top: 699px; 
+	 position: absolute; 
+	 width: 1118px;
+	 height: 34px;
+	 z-index:59;
+} 
+
+ #Path_4 
+{ 
+	 left: 161px; 
+	 top: 211px; 
+	 position: absolute; 
+	 width: 1173px;
+	 height: 403px;
+	 z-index:60;
+} 
+
+ #Path_5 
+{ 
+	 left: 161px; 
+	 top: 208px; 
+	 position: absolute; 
+	 width: 1173px;
+	 height: 403px;
+	 z-index:61;
+} 
+
+ #map 
+{ 
+	 left: 163px; 
+	 top: 210px; 
+	 position: absolute; 
+	 width: 1170px;
+	 height: 400px;
+	 z-index:62;
+} 
+
+ #Rectangle_4 
+{ 
+	 left: -1px; 
+	 top: 78px; 
+	 position: absolute; 
+	 width: 1502px;
+	 height: 83px;
+	 z-index:63;
+} 
+
+ #Path_6 
+{ 
+	 left: 162px; 
+	 top: 158px; 
+	 position: absolute; 
+	 width: 26px;
+	 height: 15px;
+	 z-index:64;
+} 
+
+ #PORTFOLIO 
+{ 
+	 left: 173px; 
+	 top: 114px; 
+	 position: absolute; 
+	 width: 123px;
+	 height: 14px;
+	 z-index:65;
+} 
+
+ #HomePodtfolio 
+{ 
+	 left: 1218px; 
+	 top: 117px; 
+	 position: absolute; 
+	 width: 114px;
+	 height: 9px;
+	 z-index:66;
+} 
+
+ #Rectangle_5 
+{ 
+	 left: -1px; 
+	 top: -1px; 
+	 position: absolute; 
+	 width: 902px;
+	 height: 82px;
+	 z-index:67;
+} 
+
+ #Path_7 
+{ 
+	 left: -216px; 
+	 top: 69px; 
+	 position: absolute; 
+	 width: 1899px;
+	 height: 12px;
+	 z-index:68;
+} 
+
+ #Path_8 
+{ 
+	 left: 1176px; 
+	 top: 23px; 
+	 position: absolute; 
+	 width: 103px;
+	 height: 36px;
+	 z-index:69;
+} 
+
+ #Path_9 
+{ 
+	 left: 1176px; 
+	 top: 23px; 
+	 position: absolute; 
+	 width: 103px;
+	 height: 33px;
+	 z-index:70;
+} 
+
+ #HOME 
+{ 
+	 left: 576px; 
+	 top: 35px; 
+	 position: absolute; 
+	 width: 42px;
+	 height: 10px;
+	 z-index:71;
+} 
+
+ #PORTFOLIO_0 
+{ 
+	 left: 869px; 
+	 top: 36px; 
+	 position: absolute; 
+	 width: 70px;
+	 height: 9px;
+	 z-index:72;
+} 
+
+ #layer_73 
+{ 
+	 left: 853px; 
+	 top: 38px; 
+	 position: absolute; 
+	 width: 8px;
+	 height: 5px;
+	 z-index:73;
+} 
+
+ #BLOG 
+{ 
+	 left: 993px; 
+	 top: 36px; 
+	 position: absolute; 
+	 width: 34px;
+	 height: 9px;
+	 z-index:74;
+} 
+
+ #FEATURES 
+{ 
+	 left: 1081px; 
+	 top: 36px; 
+	 position: absolute; 
+	 width: 61px;
+	 height: 9px;
+	 z-index:75;
+} 
+
+ #ABOUT 
+{ 
+	 left: 660px; 
+	 top: 36px; 
+	 position: absolute; 
+	 width: 46px;
+	 height: 9px;
+	 z-index:76;
+} 
+
+ #SERVICES 
+{ 
+	 left: 759px; 
+	 top: 36px; 
+	 position: absolute; 
+	 width: 56px;
+	 height: 9px;
+	 z-index:77;
+} 
+
+ #CONTACTS 
+{ 
+	 left: 1195px; 
+	 top: 36px; 
+	 position: absolute; 
+	 width: 66px;
+	 height: 9px;
+	 z-index:78;
+} 
+
+ #layer_79 
+{ 
+	 left: 1311px; 
+	 top: 34px; 
+	 position: absolute; 
+	 width: 16px;
+	 height: 16px;
+	 z-index:79;
+} 
+
+ #MODUS_0 
+{ 
+	 left: 172px; 
+	 top: 28px; 
+	 position: absolute; 
+	 width: 113px;
+	 height: 21px;
+	 z-index:80;
+} 
+
+ #versus_0 
+{ 
+	 left: 289px; 
+	 top: 36px; 
+	 position: absolute; 
+	 width: 75px;
+	 height: 13px;
+	 z-index:81;
+} 
+
+ #CompositePath_1 
+{ 
+	 left: 161px; 
+	 top: -1px; 
+	 position: absolute; 
+	 width: 1173px;
+	 height: 2002px;
+	 z-index:82;
+} 

@@ -1,0 +1,93 @@
+{% extends "AppBundle::layout_backend.html.twig" %}
+
+{% block headercontent %}
+    Datos de los Mensajes
+{% endblock %}
+
+{% block content %}    
+    <div class="box">
+        <div class="box-header">
+            <div class="row">  
+            <form action="{{path('app_admin_mensajes_search')}}" method="get">
+            <div class="col-xs-12 col-lg-12 col-md-12">
+
+             <div class="input-group">       
+                     <input class="form-control" placeholder="Buscar.." name="text" type="text">
+                     <span class="input-group-btn">
+                         <button class="btn btn-default btn-flat" type="submit"><i class="fa fa-search"></i> Buscar </button>
+                     </span>        
+                     <span class="input-group-btn">
+                         <a class="btn btn-primary btn-flat" href="{{path('app_admin_new_mensajes')}}"><i class="fa fa-plus"></i> Nuevo </a>
+                     </span>        
+             </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+            </form>
+            </div>
+        </div>
+        <div class="box-body">       
+            <table class="table table-bordered table-hover">    
+                <tbody>
+                <tr>
+                {# sorting of properties based on query components #}
+                     <th>#</th>
+                     <th>{{knp_pagination_sortable(pagination, 'Name','p.name', {'direction':'desc'})}}</th>
+                     <th>{{knp_pagination_sortable(pagination, 'Email','p.e_mail', {'direction':'desc'})}}</th>                     
+                     <th>{{knp_pagination_sortable(pagination, 'Website','p.website', {'direction':'desc'})}}</th>                     
+                     <th>{{knp_pagination_sortable(pagination, 'Mensaje','p.mensaje', {'direction':'desc'})}}</th>                     
+                     
+                     <th></th>      
+                     <th></th>      
+                     
+                     
+                    {#<th> 'Release', ['a.date', 'a.time']) }}</th>#}
+                </tr>        
+                {% for c in pagination %}
+                    <tr>
+                        <td>
+                            {{loop.index}}
+                        </td>
+                        <td>
+                            {{ c.name }}
+                        </td>
+                        <td>
+                            {{ c.eMail }}
+                        </td>
+                        <td>
+                            {{ c.website }}
+                        </td>           
+                        
+                        <td>
+                            {{ c.mensaje }}
+                        </td>
+                        
+                        
+                        <td>
+                            <a href="{{path('app_admin_edit_mensajes', {'id':c.id})}}"><i class="fa fa-edit"></i></a>
+                        </td>
+                        
+                        <td>
+                            <a href="{{path('app_admin_delete_mensajes', {'id':c.id})}}"><i class="fa fa-remove text-red"></i></a>
+                        </td>
+                        
+                    </tr>
+                {% else %}
+                    <tr class="danger">
+                        <td colspan="4">
+                            No hay resultados para mostrar.
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+                </table> 
+        </div>        
+        <div class="box-footer">    
+            <div class="pull-left">
+                Total Registros: {{pagination.getTotalItemCount }}
+            </div>
+            <div class="pull-right">
+                {{ knp_pagination_render(pagination) }}
+            </div>
+
+        </div><!-- box-footer -->
+    </div>
+{% endblock %}

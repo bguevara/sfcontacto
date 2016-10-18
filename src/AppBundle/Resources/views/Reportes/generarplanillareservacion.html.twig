@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pdf SYSTEM "%resources%/dtd/doctype.dtd">
+
+<pdf>
+   <dynamic-page>
+    <placeholders>
+        <header>
+             <div class="head">
+                 
+                    <h3>CAJA DE AHORRO Y PRESTAMOS DE LOS TRABAJADORES ADMINISTRATIVOS</h3>  
+                   <h3>UNIVERSIDAD PEDAGÓGICA EXPERIMENTAL LIBERTADOR</h3>  
+                   <h3>CAPTAUPEL-IPB</h3>  
+        
+            </div>
+        </header>
+        
+    </placeholders>
+       
+       
+    <div class="descripcion">
+    <h2>Planilla de Reservación</h2>
+    </div>
+  
+        
+     <div class="info">
+            <table>
+                <tbody>
+                <tr>
+                    <th><label>Cédula:</label> </th>
+                    <th>{{clientes.cedula}}</th>
+                     <th></th>
+                    <th></th>
+                </tr>
+              
+                    
+                <tr>
+                     <th><label>Primer Apellido:</label> </th>
+                     <th>{{clientes.primerapellido}}</th>
+                     <th><label>Segundo Apellido:</label> </th>
+                     <th>{{clientes.segundoapellido}}</th>
+                </tr>
+                
+                <tr>
+                     <th><label>Primer Nombre:</label> </th>
+                     <th>{{clientes.primernombre}}</th>
+                     <th><label>Segundo Nombre:</label> </th>
+                     <th>{{clientes.segundonombre}}</th>
+                </tr>
+                
+                <tr>
+                     <th><label>Telefono:</label> </th>
+                     <th>{{clientes.telefonohab}}</th>
+                     <th><label>Celular:</label> </th>
+                     <th>{{clientes.celular}}</th>
+                </tr>
+                
+                    <tr>
+                     <th><label>Dirección:</label> </th>
+                     <th>{{clientes.direccion}}</th>
+                     <th><label>Email:</label> </th>
+                     <th>{{clientes.email}}</th>
+                </tr>
+                    
+                
+                </tbody>
+                </table> 
+        </div>
+                    
+                    
+        
+        <div class="box-body">       
+            
+                 <table class="table table-bordered table-hover">    
+                <tbody>
+                    
+                <tr>
+                    <th><label>Nro</label> {#{variable}#}</th>
+                    <th><label>Fecha Inicial</label> </th>
+                    <th><label>Fecha Final</label> </th>
+                    <th><label>Adultos</label> </th>
+                    <th><label>Niños</label> </th>
+                    <th><label>Cant. Apto</label> </th>
+                    <th><label>Monto Reservado</label> </th>
+                </tr>        
+        
+         {% for d in datos%} 
+            
+      
+                
+                <tr>
+                     <th>{{d.id}}</th>
+                     <th>{{d.fechaInicial |date('d-m-Y')}}</th>
+                     <th>{{d.fechaFinal |date('d-m-Y')}}</th>
+                     <th>{{d.cantAdulto}}</th>
+                     <th>{{d.cantMenores}}</th>
+                     <th>{{d.cantApartamentos}}</th>
+                    <th>{{d.monto}}</th>
+                </tr>        
+         
+               
+              {% else %}
+                <tr class="error">
+                <td colspan="6"> No tiene Reservaciones</td>
+                </tr>
+                {% endfor %}
+     
+         
+            
+         
+                 </tbody>
+                </table> 
+           </div> 
+           
+   </dynamic-page>
+
+</pdf>          
+        

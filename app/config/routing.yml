@@ -1,0 +1,14 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+    
+app_admin_login:
+    path:     /app/login
+    defaults: { _controller: "UsersBundle:Admin:login" } 
+
+app_admin_login_check:
+    path:     /app/login_check   
+   
+app_admin_logout:
+    path:    /app/logout
+

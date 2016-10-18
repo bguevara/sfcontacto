@@ -1,0 +1,48 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div class="wrapper">
+
+      <!-- ENCABEZADO -->
+      {#{render(controller('UsersBundle:Admin:includeHead')) }#}
+      <!-- FIN ENCABEZADO -->
+        
+        
+       <!-- Left side column. contains the logo and sidebar -->          
+       {#{render(controller('UsersBundle:Admin:includeAsideLeft'))}#}
+       <!-- /.sidebar -->
+        
+      <!-- Content Wrapper. Contains page content -->
+      <!--<div class="content-wrapper"> -->
+        <!-- Content Header (Page header) -->
+        
+        <section class="content-header">
+          <h1>
+            {% block headercontent %}{% endblock %}              
+          </h1>
+          <ol class="breadcrumb">       
+            <li class="active">{{ "now" | date('d/m/Y H:i:s A') }}</li>
+          </ol>
+        </section>
+
+        <!-- Main content -->
+        <div class="content">
+            {% block content %}{% endblock %}
+        </div>
+      <div class="container">
+        {{ include ('AppBundle:Default:includes/flashMessages.html.twig')}} 
+      </div>
+     <!-- </div> --> <!-- /.content-wrapper -->
+      
+      
+      <footer class="main-footer">    
+            <strong>Copyright &copy; {{ "now "   | date('Y')}} - {{ "now"   |date_modify("+1 year")| date('Y')}} <a href="{{path('app_homepage')}}">Sistema Integral de Reservas Complejo Turistico   </a>.</strong> Todos los derechos reservados.
+     </footer>
+
+      
+      
+    
+           <!--immediately after the control sidebar -->
+      <div class="control-sidebar-bg"></div>
+    </div><!-- ./wrapper -->
+{% endblock %}

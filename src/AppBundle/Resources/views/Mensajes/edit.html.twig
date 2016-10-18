@@ -1,0 +1,63 @@
+{% extends "AppBundle::layout_backend.html.twig" %}
+
+{% block headercontent %}
+
+{% endblock %}
+
+{% block content %}    
+    <div class="box">
+        <div class="box-header">
+            <h3>Actualización de Mensajes</h3>
+        </div>
+        <div class="box-body">       
+         
+             
+            {{ form_start(form) }}
+         
+            
+            <div class="row">    
+                <div class="col-lg-3 col-md-4 col-xs-12">
+                    <div class="form-group">
+                        {{form_label(form.name, 'Name')}}
+                        {{form_widget(form.name, {'attr':{'class':'form-control'}})}}
+                        {{form_errors(form.name)}}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="form-group">
+                        {{form_label(form.e_mail,'EMail')}}
+                        {{form_widget(form.e_mail, {'attr':{'class':'form-control'} })}}
+                        {{form_errors(form.e_mail)}}
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="form-group">
+                        {{form_label(form.website,'Web Site')}}
+                        {{form_widget(form.website, {'attr':{'class':'form-control'} })}}
+                        {{form_errors(form.website)}}
+                    </div>
+                </div>
+            </div>
+       
+                    
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="form-group">
+                        {{form_label(form.mensaje,'Mensaje')}}
+                        {{form_widget(form.mensaje, {'attr':{'class':'form-control'} })}}
+                        {{form_errors(form.mensaje)}}
+                    </div>
+                </div>
+            </div>                    
+                    
+            
+            
+            {{form_errors(form)}}
+            {{form_rest(form)}}
+            
+            {{form_end(form)}}<a class="btn btn-danger" href="{{path('app_admin_mensajes')}}"><i class="fa fa-remove text-white"></i> Cancelar </a>
+        </div>          
+    </div>
+{% endblock %}

@@ -1,0 +1,57 @@
+security:   
+    encoders:
+        UsersBundle\Entity\Users: plaintext
+        #UsersBundle\Entity\Users: {algorithm: sha512, iterations: 10 }
+        
+        
+
+    #role_hierarchy:
+        #ROLE_ADMIN:       ROLE_ADMIN
+        #ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    providers:
+        reservas:
+            entity: {class: UsersBundle\Entity\Users, property: email }        
+            
+            
+
+    firewalls:
+        backend:
+            pattern: ^/*            
+            anonymous: ~ 
+            provider: reservas
+            anonymous: ~
+            form_login:                                
+                login_path: app_admin_login
+                check_path: app_admin_login_check                
+            logout:
+                path:   app_admin_logout
+                target: app_homepage
+            
+#        dev:
+#            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+#            security: false
+#
+#        login:
+#            pattern:  ^/demo/secured/login$
+#            security: false
+#
+#        secured_area:
+#            pattern:    ^/demo/secured/
+#            form_login:
+#                check_path: _security_check
+#                login_path: _demo_login
+#            logout:
+#                path:   _demo_logout
+#                target: _demo
+            #anonymous: ~
+            #http_basic:
+            #    realm: "Secured Demo Area"
+
+    access_control:   
+        - { path: ^/app/login, roles: IS_AUTHENTICATED_ANONYMOUSLY}
+        #- { path: ^/users/register, roles: IS_AUTHENTICATED_ANONYMOUSLY}
+        - { path: ^/app/publico/reservas/*, roles: IS_AUTHENTICATED_ANONYMOUSLY }    
+        - { path: ^/app/admin/*, roles: [ROLE_ADMIN, ROLE_BASICO, ROLE_NORMAL] }        
+              
+        #- { path: ^/admin/*, roles: [ROLE_ADMIN] }

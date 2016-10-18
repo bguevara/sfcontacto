@@ -1,0 +1,184 @@
+<!DOCTYPE pdf SYSTEM "%resources%/dtd/doctype.dtd">
+<pdf>
+    <dynamic-page >
+      
+          <div class="head">
+                 
+                   <h2 text-align="center">CAJA DE AHORRO Y PRESTAMOS DE LOS TRABAJADORES ADMINISTRATIVOS</h2>  
+                   <h2 text-align="center">UNIVERSIDAD PEDAGÓGICA EXPERIMENTAL LIBERTADOR</h2>  
+                   <h2 text-align="center">CAPTAUPEL-IPB</h2>  
+        
+            </div>
+ 
+        
+        
+        
+        
+           
+      <div class="descripcion">
+    <h2 text-align="center">Planilla de Reservación</h2>
+    </div>
+  
+        
+     <div class="info">
+         
+         
+           
+         
+            <table background.color="white">
+               
+                <tr>
+                    <td border.color="white"><h3>Cédula:</h3></td>
+                    <td border.color="white"><h3>{{clientes.cedula}}</h3></td>
+                     <td border.color="white"></td>
+                    <td border.color="white"></td>
+                </tr>
+              
+                    
+                <tr>
+                     <td border.color="white"><h3>Primer Apellido:</h3></td>
+                     <td border.color="white"><h4>{{clientes.primerapellido}}</h4></td>
+                     <td border.color="white"><h3>Segundo Apellido:</h3></td>
+                     <td border.color="white"><h4>{{clientes.segundoapellido}}</h4></td>
+                </tr>
+                
+                <tr>
+                     <td border.color="white"><h3>Primer Nombre:</h3> </td>
+                     <td border.color="white"><h4>{{clientes.primernombre}}</h4></td>
+                     <td border.color="white"><h3>Segundo Nombre:</h3> </td>
+                     <td border.color="white" ><h4>{{clientes.segundonombre}}</h4></td>
+                </tr>
+                
+                <tr>
+                     <td border.color="white"><h3>Telefono:</h3> </td>
+                     <td border.color="white"><h4>{{clientes.telefonohab}}</h4></td>
+                     <td border.color="white"><h3>Celular:</h3> </td>
+                     <td border.color="white"><h4>{{clientes.celular}}</h4></td>
+                </tr>
+                
+                    <tr>
+                     <td border.color="white"><h3>Dirección:</h3> </td>
+                     <td border.color="white"><h4>{{clientes.direccion}}</h4></td>
+                     <td border.color="white"><h3>Email:</h3></td>
+                     <td border.color="white"><h4>{{clientes.email}}</h4></td>
+                </tr>
+                    
+                
+               
+                </table> 
+        </div>
+                    
+  
+                <div class="descripcion">
+                <h2>DETALLE DE LAS RESERVACIONES REALIZADAS</h2>
+                </div>
+  
+                 
+              <table class="tablenoborder">
+    
+            
+        <stylesheet>
+            <attribute name="text-align" value="center" />
+             <attribute name="font-size" value="12px" />
+        </stylesheet>
+        
+             
+         {% for d in datos%} 
+            
+                <tr>
+                    <td background.color="#EFF8FB"><h3>Nro.</h3></td>
+                    <td background.color="#EFF8FB"><h3>Fecha Inicial</h3></td>
+                    <td background.color="#EFF8FB"><h3>Fecha Final</h3></td>
+                    <td background.color="#EFF8FB"><h3>Adultos</h3></td>
+                    <td background.color="#EFF8FB"><h3>Niños</h3></td>
+                    <td background.color="#EFF8FB"><h3>Cant. Apto</h3></td>
+                    <td background.color="#EFF8FB"><h3>Monto Reservado</h3></td>
+                     <td background.color="#EFF8FB"><h3>Condición</h3></td>
+                </tr>        
+        
+      
+                
+                <tr>
+                    <td border.color="white"><strong>{{d.id}}</strong></td>
+                     <td  border.color="white"><strong>{{d.fechaInicial |date('d-m-Y')}}</strong></td>
+                     <td  border.color="white"><strong>{{d.fechaFinal |date('d-m-Y')}}</strong></td>
+                     <td  border.color="white"><strong>{{d.cantAdulto}}</strong></td>
+                     <td border.color="white"><strong>{{d.cantMenores}}</strong></td>
+                     <td  border.color="white"><strong>{{d.cantApartamentos}}</strong></td>
+                    <td  border.color="white"><strong>{{d.monto | number_format(2, ',', '.')}}</strong></td>
+                     <td  border.color="white"><strong>{{d.condicionId.descripcion}}</strong></td>
+                </tr>        
+         
+                
+            {% if d.Reservadepid | length>0 %}
+    
+                     <tr>
+                     <td></td>
+                     <td></td>
+                     <td></td>
+                     <td></td>
+                     <td></td>
+                     <td></td>
+                    <td></td>
+                     <td></td>
+                </tr>        
+         
+                 
+                
+                  <tr>
+                     <td background.color="#EFF8FB"><h3>Nro</h3></td>
+                     <td background.color="#EFF8FB"><h3>Movimiento</h3></td>
+                     <td background.color="#EFF8FB"><h3>Fecha Pago</h3></td>
+                     <td background.color="#EFF8FB"><h3>Forma de Pago</h3></td>
+                     <td background.color="#EFF8FB"><h3>Monto</h3></td>
+                  </tr>
+          
+                {% set totalmonto=0%}
+              
+                {% for depositos in d.Reservadepid%}
+                    
+                  <tr>        
+         
+                     <td  border.color="white">{{loop.index}}</td>
+                     <td border.color="white">{{depositos.nromovimiento}}</td>
+                     <td  border.color="white">{{depositos.fechapago |date('d-m-Y')}}</td>
+                     <td border.color="white">{{depositos.formapago}}</td>
+                     <td border.color="white">{{depositos.monto | number_format(2, ',', '.')}}</td>
+                   </tr>        
+              
+                     {% set totalmonto=totalmonto+depositos.monto%}
+              
+                   
+                {% endfor %}
+         
+                   <tr>        
+         
+                     <td  border.color="white"></td>
+                     <td border.color="white"></td>
+                     <td  border.color="white"></td>
+                     <td border.color="white"><strong>TOTAL</strong></td>
+                     <td border.color="white"><strong>{{totalmonto | number_format(2, ',', '.')}}</strong></td>
+                   </tr>        
+              
+                
+             {% endif %}
+         
+                
+                
+              {% else %}
+                <tr class="error">
+                <td colspan="6"> No tiene Reservaciones</td>
+                </tr>
+                {% endfor %}
+     
+         
+            
+         
+                </table> 
+
+                
+        <span>Esta reservación puede caducar si no ha realizado el pago en el tiempo estipulado.</span>
+                
+        
+    </dynamic-page>
+</pdf>

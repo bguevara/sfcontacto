@@ -1,0 +1,7 @@
+2bfcf3,127.0.0.1,GET,http://127.0.0.1/sisbase001/web/app_dev.php/app/login,1476749386,,200
+5e4d47,127.0.0.1,GET,http://127.0.0.1/sisbase001/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DUsersBundle%253AAdmin%253AincludeHead,1476749395,b33cc6,200
+a0d48c,127.0.0.1,GET,http://127.0.0.1/sisbase001/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DUsersBundle%253AAdmin%253AincludeAsideLeft,1476749395,b33cc6,200
+b33cc6,127.0.0.1,GET,http://127.0.0.1/sisbase001/web/app_dev.php/app/admin,1476749396,,200
+60a570,127.0.0.1,GET,http://127.0.0.1/sisbase001/web/app_dev.php/app/logout,1476749407,,302
+13b77d,127.0.0.1,GET,http://127.0.0.1/sisbase001/web/app_dev.php/app/admin,1476749407,,302
+b50ac2,127.0.0.1,GET,http://127.0.0.1/sisbase001/web/app_dev.php/app/login,1476749407,,200

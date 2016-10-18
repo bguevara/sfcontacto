@@ -1,0 +1,17 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: bdsisbaseu001
+    database_user: root
+    database_password: 16557544
+    database_host2: 127.0.0.1
+    database_port2: null
+    database_name2: bdsisbase001
+    database_user2: root
+    database_password2: 16557544
+    mailer_transport: gmail
+    mailer_host:
+    mailer_user: sistemabase001@gmail.com
+    mailer_password: T16557544
+    secret: ThisTokenIsNotSoSecretChangeIt
